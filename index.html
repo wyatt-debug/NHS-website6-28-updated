@@ -126,6 +126,7 @@
             background: var(--border-soft);
         }
         .focus-card:hover { transform: translateY(-5px); box-shadow: 0 12px 28px rgba(58,35,18,0.12); border-color: var(--harvest-gold); }
+        a.focus-card { text-decoration: none; color: inherit; }
         .focus-card .focus-icon { font-size: 1.9rem; color: var(--harvest-gold); margin-bottom: 16px; }
         .focus-card h3 { color: var(--brand-brown); font-size: 1.35rem; font-weight: 800; margin-bottom: 8px; }
         .focus-card p { color: var(--text-muted); font-size: 0.97rem; margin-bottom: 18px; flex-grow: 1; }
@@ -183,17 +184,6 @@
         .sub-metric-headline span { color: var(--brand-brown); background-color: #f7f1e6; padding: 2px 8px; border-radius: 4px; border: 1px solid var(--border-soft); display: inline-block; }
         .rollover-subtext { font-size: 1.05rem; font-weight: 600; color: var(--text-muted); padding-top: 10px; border-top: 1px dashed var(--border-soft); }
 
-        .single-product-container { background: var(--pure-white); border-radius: 12px; max-width: 950px; margin: 0 auto; box-shadow: 0 6px 25px rgba(58,35,18,0.07); border: 2px solid var(--border-soft); overflow: hidden; display: grid; grid-template-columns: 1.11fr 0.89fr; }
-        .product-visual-image { position: relative; background-color: var(--brand-brown); min-height: 350px; }
-        .product-visual-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .product-image-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(58,35,18,0.95)); color: var(--pure-white); padding: 20px; text-align: center; }
-        .product-details { padding: 40px; display: flex; flex-direction: column; justify-content: center; }
-        .price-badge { font-size: 2.5rem; color: var(--brand-brown); font-weight: 800; margin: 5px 0 15px 0; }
-        .purchase-controls { display: flex; gap: 15px; margin-top: 25px; }
-        .qty-input { width: 75px; padding: 10px; text-align: center; border: 2px solid var(--border-soft); background-color: var(--light-cream); border-radius: 4px; font-size: 1.1rem; font-weight: bold; }
-        .buy-btn { flex-grow: 1; background-color: var(--harvest-gold); color: var(--brand-brown); border: none; padding: 12px; font-weight: bold; font-size: 1.1rem; cursor: pointer; border-radius: 4px; transition: background 0.2s; text-align: center; text-decoration: none; display: inline-block; }
-        .buy-btn:hover { background-color: #cb971f; }
-
         /* TRUST BADGES */
         .trust-bar {
             background: var(--warm-tan);
@@ -214,15 +204,15 @@
             display: grid;
             grid-template-columns: 0.85fr 1.15fr;
             gap: 45px;
-            align-items: stretch;
+            align-items: start;
             background: var(--pure-white);
             border: 1px solid var(--border-soft);
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 6px 22px rgba(58,35,18,0.05);
         }
-        .about-photo-pane { position: relative; background: var(--brand-brown); min-height: 380px; }
-        .about-photo-pane img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .about-photo-pane { position: relative; background: var(--brand-brown); }
+        .about-photo-pane img { width: 100%; height: auto; aspect-ratio: 1200 / 1600; object-fit: contain; object-position: center center; display: block; }
         .about-photo-pane .photo-caption {
             position: absolute; bottom: 0; left: 0; right: 0;
             background: linear-gradient(transparent, rgba(58,35,18,0.92));
@@ -273,17 +263,28 @@
         .social-icon.facebook:hover { background: #0e5fd1; border-color: #0e5fd1; }
         .social-icon.youtube { background: #ff0000; border-color: #ff0000; }
         .social-icon.youtube:hover { background: #cc0000; border-color: #cc0000; }
-        .social-icon.instagram { background: radial-gradient(circle at 30% 110%, #fdf497 0%, #fd5949 45%, #d6249f 70%, #285AEB 100%); border-color: #d6249f; }
-        .social-icon.instagram:hover { filter: brightness(1.08); }
         .social-label { display:block; text-align:center; margin-top:8px; font-size:0.8rem; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.5px; }
         .social-item { display:flex; flex-direction:column; align-items:center; }
 
         footer { background-color: var(--brand-brown); color: var(--pure-white); text-align: center; padding: 40px 20px; margin-top: 80px; border-top: 4px solid var(--harvest-gold); }
         .footer-logo { width: 70px; height: 70px; object-fit: contain; border-radius: 50%; border: 2px solid var(--harvest-gold); margin: 0 auto 15px auto; display: block; background-color: #e7b36a; }
 
+        @media (max-width: 1180px) {
+            .nav-right-group { gap: 12px; }
+            nav a { font-size: 0.86rem; }
+            nav a:not(:last-child) { margin-right: 10px; }
+        }
+        @media (max-width: 960px) {
+            header { flex-direction: column; gap: 10px; text-align: center; }
+            .nav-right-group { justify-content: center; }
+            nav { display: flex; flex-wrap: wrap; justify-content: center; }
+            nav a { font-size: 0.95rem; }
+            nav a:not(:last-child) { margin-right: 14px; }
+            section[id], .tab-wrapper { scroll-margin-top: 190px; }
+        }
         @media (max-width: 900px) {
             .about-combined { grid-template-columns: 1fr; }
-            .about-photo-pane { min-height: 300px; }
+            .about-photo-pane { min-height: 0; }
             .about-text-pane { padding: 30px; }
         }
         @media (max-width: 768px) {
@@ -291,15 +292,13 @@
             nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 0; }
             nav a:not(:last-child) { margin-right: 16px; }
             nav a { margin: 4px 0; }
-            section[id], .tab-wrapper { scroll-margin-top: 150px; }
+            section[id], .tab-wrapper { scroll-margin-top: 230px; }
             .hero { padding: 70px 18px; }
             .hero h2 { font-size: 2rem; }
             .hero p { font-size: 1.05rem; }
             .focus-areas { grid-template-columns: 1fr; }
             .tab-headers { flex-direction: column; }
             .tab-link:not(:last-child) { border-right: none; border-bottom: 1px solid var(--border-soft); }
-            .single-product-container { grid-template-columns: 1fr; }
-            .product-visual-image { min-height: 250px; }
             .photo-strip { grid-template-columns: 1fr 1fr; height: auto; }
             .photo-strip-item { height: 160px; }
             .feature-banner { grid-template-columns: 1fr; }
@@ -322,7 +321,7 @@
                 <a href="#focus">Focus Areas</a>
                 <a href="#solutions">What We Do</a>
                 <a href="#calculator">Box Calculator</a>
-                <a href="#products">Purchase</a>
+                <a href="#tools">Tools</a>
                 <a href="#about">About Us</a>
                 <a href="#contact">Contact</a>
             </nav>
@@ -332,11 +331,11 @@
 
     <section class="hero">
         <span class="eyebrow">Soil-First Organic Agriculture</span>
-        <h2>Healthier Soil. Cleaner Water. Stronger Crop.</h2>
-        <p>Natural Heartland Solutions starts where every great crop starts in the SOIL. Our OMRI certified organic formulas rebuild living soil biology, then carry that same biological power into manure pits and farm ponds. One ecosystem, restored from the ground up.</p>
+        <h2>Healthier Soil. Cleaner Water. Stronger Yields.</h2>
+        <p>Natural Heartland Solutions starts where every great crop starts &mdash; in the soil. Our OMRI certified organic formulas rebuild living soil biology, then carry that same biological power into manure pits and farm ponds. One ecosystem, restored from the ground up.</p>
         <div class="hero-cta-row">
             <a href="#focus" class="cta-btn">Explore Our Focus Areas</a>
-            <a href="#products" class="cta-btn ghost">Order Organic Boxes</a>
+            <a href="https://wyatt-debug.github.io/Test-Plot/" class="cta-btn ghost" target="_blank" rel="noopener noreferrer">Test Plot</a>
         </div>
     </section>
 
@@ -393,7 +392,7 @@
                 <span class="pill">Our Foundation</span>
                 <i class="fa-solid fa-seedling focus-icon"></i>
                 <h3>Soil Health</h3>
-                <p>Rebuild the biological engine beneath your crops. Biomentum, ABC Soil Health, and Aminos-N activate native microbes, unlock locked-up minerals, and stress proof yields &mdash; naturally.</p>
+                <p>Rebuild the biological engine beneath your crops. Biomentum, ABC Soil Health, and Aminos-N activate native microbes, unlock locked-up minerals, and stress-proof yields &mdash; naturally.</p>
                 <span class="focus-link">See soil solutions <i class="fa-solid fa-arrow-right"></i></span>
             </div>
             <div class="focus-card" onclick="focusTo('manure-tab', 1)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')focusTo('manure-tab',1)">
@@ -416,7 +415,7 @@
         <img src="soil-tractor.jpg" alt="Tractor working tilled Iowa soil">
         <div class="feature-banner-text">
             <h3>It All Starts in the Soil</h3>
-            <p>Natural Heartland's products was NOT created in a lab far removed from the realities of modern agriculture. Natural Heartland Solutions was born out of the same fields, barns, and ponds that our customers work every single day and the healthiest of those fields all have one thing in common: living, biologically active soil.</p>
+            <p>We didn't develop these products in a lab far removed from the realities of modern agriculture. Natural Heartland Solutions was born out of the same fields, barns, and ponds that our customers work every single day &mdash; and the healthiest of those fields all have one thing in common: living, biologically active soil.</p>
             <p>That conviction drives everything. Our soil-health line rebuilds the microbial foundation beneath your crops, and the same OMRI listed biology powers our Pit Pucks and Pond Pucks. Healthy soil, managed manure, and clean water are one connected system &mdash; and we treat them that way.</p>
             <a href="#contact" class="cta-btn" style="margin-top:10px;">Talk to Our Team</a>
         </div>
@@ -465,19 +464,16 @@
                 </div>
                 <div class="soil-subsection">
                     <h4>Aminos-N</h4>
-                    <div class="soil-headline">Stress Proof Your Yields with Premium Plant Nutrition</div>
+                    <div class="soil-headline">Stress-Proof Your Yields with Premium Plant Nutrition</div>
                     <p>When heat waves, drought, or extreme weather strike, your crops shouldn't have to fight to survive. Aminos-N delivers a highly bioavailable dose of 18 essential L-form amino acids and 16 vital trace minerals directly to the plant. Because it provides a clean, easily digestible source of organic nitrogen, your crops don't have to waste valuable energy processing heavy synthetic fertilizers. Instead, they can focus that energy on thriving through environmental stress, maintaining steady growth, and pushing for top tier yields.</p>
                 </div>
-                <p style="margin-top: 25px; font-weight: bold; color: var(--brand-brown); text-align: center; font-size: 1.1rem;">
-                    For ways to purchase or learn more <a href="#contact" style="color: var(--harvest-gold); text-decoration: underline;">Contact Us!</a>
-                </p>
             </div>
 
             <div id="manure-tab" class="tab-content">
                 <img class="tab-img" src="hogbarn.jpg" alt="Hogs in a hog barn">
                 <div class="tab-lead manure">
                     <h3>Hog Manure and More: The Power of the Pit Puck</h3>
-                    <p>Traditional manure management is an uphill battle against crusting, harsh odors, and critical nutrient loss. Our biological approach shifts the focus from simple waste storage to active nutrient optimization &mdash; turning your barn's waste into a high value fertilizer asset. Drop these all-natural, OMRI listed pucks directly into your facility's waste system and a focused microbial digestion cascade goes to work.</p>
+                    <p>Traditional manure management is an uphill battle against crusting, harsh odors, and critical nutrient loss. Our biological approach shifts the focus from simple waste storage to active nutrient optimization &mdash; turning your barn's waste into a high-value fertilizer asset. Drop these all-natural, OMRI listed pucks directly into your facility's waste system and a focused microbial digestion cascade goes to work.</p>
                 </div>
                 <div class="soil-subsection">
                     <h4>Nutrient Stabilization</h4>
@@ -499,9 +495,6 @@
                     <div class="soil-headline">Break Down Sludge, Crust, and Methane Hazards</div>
                     <p>These specialized microbes aggressively accelerate decomposition to actively reduce heavy bottom sludge, eliminate thick crusting blockages, and prevent foaming methane hazards &mdash; keeping your pit flowing and safe.</p>
                 </div>
-                <p style="margin-top: 25px; font-weight: bold; color: var(--brand-brown); text-align: center; font-size: 1.1rem;">
-                    For ways to purchase or learn more <a href="#contact" style="color: var(--harvest-gold); text-decoration: underline;">Contact Us!</a>
-                </p>
             </div>
 
             <div id="pond-tab" class="tab-content">
@@ -530,9 +523,6 @@
                     <div class="soil-headline">Clearer Water, Permanently Lower Nutrient Loading</div>
                     <p>Boosting microbial diversity dramatically speeds up the natural breakdown of organic matter, improving water clarity and permanently reducing the internal nutrient loading that fuels future blooms.</p>
                 </div>
-                <p style="margin-top: 25px; font-weight: bold; color: var(--brand-brown); text-align: center; font-size: 1.1rem;">
-                    For ways to purchase or learn more <a href="#contact" style="color: var(--harvest-gold); text-decoration: underline;">Contact Us!</a>
-                </p>
             </div>
         </div>
     </section>
@@ -562,34 +552,28 @@
         </div>
     </section>
 
-    <section id="products" class="container">
-        <h2 class="section-title">Purchase Organic Treatment Pucks</h2>
-        <div class="single-product-container">
-            <div class="product-visual-image">
-                <img src="pitpucks.jpg" alt="NHS Ammonia Pit Pucks">
-                <div class="product-image-overlay">
-                    <p style="font-size: 0.95rem; font-weight: 700; letter-spacing: 0.3px;">
-                        Pit Pucks (Manure) &bull; Pond Pucks (Waterways)
-                    </p>
-                </div>
-            </div>
-            <div class="product-details">
-                <h3 style="color: var(--brand-brown); font-size: 1.4rem; font-weight: 800;">All-Organic Premium Box</h3>
-                <p style="color: var(--text-dark); margin: 12px 0 22px 0; font-size: 0.95rem;">
-                    OMRI Certified organic microbial formula developed directly by Northwest Iowa farmers. Safely degrades heavy organic matter, eliminates ammonia hazards, clears sludge, and enhances native soil fertilizer biology.
-                </p>
-                <div style="font-size: 1rem; font-weight: 700; color: var(--brand-brown); background-color: var(--warm-tan); padding: 6px 12px; border-radius: 4px; display: inline-block; margin-bottom: 10px;">Box Size: 60-Count Pucks</div>
-                <div class="price-badge">$250.00</div>
-                <div class="purchase-controls">
-                    <input type="number" class="qty-input" value="1" min="1" id="box-qty">
-                    <button class="buy-btn" onclick="triggerPurchase()">
-                        <i class="fa-solid fa-cart-shopping"></i> Purchase Box(es)
-                    </button>
-                </div>
-                <p style="margin-top:18px; font-size:0.9rem; color:var(--text-muted);">
-                    Soil-health products (Biomentum, ABC Soil Health, Aminos-N) are sold by the gallon and matched to your operation &mdash; <a href="#contact" style="color:var(--brand-brown); font-weight:700;">reach out for soil pricing</a>.
-                </p>
-            </div>
+    <section id="tools" class="container">
+        <h2 class="section-title">Tools</h2>
+        <p class="section-intro">Each tool opens in a new tab.</p>
+        <div class="focus-areas">
+            <a class="focus-card" href="https://wyatt-debug.github.io/Base_Application_2026/" target="_blank" rel="noopener noreferrer">
+                <i class="fa-solid fa-clipboard-list focus-icon"></i>
+                <h3>Base Application</h3>
+                <p>2026 season program calculator. Type your acres and choose conventional or organic.</p>
+                <span class="focus-link">Open in a new tab <i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a class="focus-card" href="https://wyatt-debug.github.io/barn-calculator/" target="_blank" rel="noopener noreferrer">
+                <i class="fa-solid fa-barn focus-icon"></i>
+                <h3>Barn Calculator</h3>
+                <p>Pit Puck plan for one barn or a whole operation, with a printable summary.</p>
+                <span class="focus-link">Open in a new tab <i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a class="focus-card" href="https://wyatt-debug.github.io/Test-Plot/" target="_blank" rel="noopener noreferrer">
+                <i class="fa-solid fa-chart-column focus-icon"></i>
+                <h3>Test Plot</h3>
+                <p>The 2026 Algona corn trial: same field, same hybrid, weighed at the scale.</p>
+                <span class="focus-link">Open in a new tab <i class="fa-solid fa-arrow-right"></i></span>
+            </a>
         </div>
     </section>
 
@@ -601,24 +585,20 @@
             </p>
 
             <div class="about-combined">
-                <!-- ONE photo of both founders. Replace the src below with your uploaded image. -->
                 <div class="about-photo-pane">
-                    <img id="founders-photo" src="founders.jpg" alt="Evan and Wyatt, co-founders of Natural Heartland Solutions, in a cornfield">
-                    <div class="photo-caption">Evan &amp; Wyatt<span>Co-Founders</span></div>
+                    <img id="founders-photo" src="founders.jpg" width="1200" height="1600" alt="Wyatt Streit, left, and Evan Deal, right, leaning on a red gate in Natural Heartland Solutions hats and polos">
+                    <div class="photo-caption">Wyatt Streit, left · Evan Deal, right<span>Co-Founders</span></div>
                 </div>
                 <div class="about-text-pane">
                     <div class="founder-block">
-                        <div class="founder-name">Evan Deal  (Left)</div>
+                        <div class="founder-name">Evan</div>
                         <div class="founder-role">Co-Founder</div>
-                        <p>Born and raised on a small family farm in Algona, Iowa, Evan's deep connection to the land has shaped his entire life and career. Today, he continues to work the ground alongside his father, maintaining operations of the family farm.
-He co-founded this company while actively pursuing his higher education at Iowa State University and serving his country in the Iowa Air National Guard.
-Driven by a genuine passion for structural rural sustainability, Evan helped implement our high efficiency biological formulas to give producers a proven, effective alternative to traditional heavy synthetics. Beyond the field, his dedication to the community extends into a deep engagement with Iowa and federal politics, keeping him at the forefront of the policies affecting rural America.</p>
+                        <p>Born and raised on an Iowa farm, Evan's deep connection to the land has shaped his entire life and career. He co-founded this company while pursuing his higher education and serving his country with the Iowa Air National Guard, a commitment that has included multiple overseas deployments. Driven by a passion for rural sustainability, Evan helped implement our high-efficiency biological formulas to give producers a proven alternative to heavy synthetics. He knows the sacrifice of service, the realities of modern farming, and is fully invested in the future of the American producer.</p>
                     </div>
                     <div class="founder-block">
-                        <div class="founder-name">Wyatt Streit  (Right)</div>
+                        <div class="founder-name">Wyatt</div>
                         <div class="founder-role">Co-Founder</div>
-                        <p>Born and raised on a farm in Bode, Iowa, with family roots tied to the state's earliest farming settlements, Wyatt has a lifelong understanding of the challenges facing modern growers. A natural entrepreneur with a knack for creative problem solving, he co-founded Natural Heartland Solutions while studying at Iowa State University.
-As the driving force behind the brand's distribution, Wyatt’s mission goes far beyond moving product. He brings fresh, innovative thinking to the field, working directly with the agricultural community to educate growers on manure optimization, regulatory compliance, and sustainable soil health. Wyatt combines entrepreneurial grit, a passion for learning, and a commitment to delivering the forward thinking solutions Iowa farmers need to succeed.</p>
+                        <p>Born and raised in Iowa with family roots in the state's earliest farming settlements, Wyatt has always understood the challenges facing modern growers. While studying at Iowa State University, he partnered with Northwest Iowa operators to launch the Natural Heartland Solutions signature line of organic pucks. As distributor of these lines, his mission goes beyond moving product &mdash; he works directly with the agricultural community to educate growers on manure optimization, compliance, and sustainable soil health. Wyatt knows the soil, the regulations, and what Iowa farmers need to succeed.</p>
                     </div>
                 </div>
             </div>
@@ -636,10 +616,10 @@ As the driving force behind the brand's distribution, Wyatt’s mission goes far
                 <span class="social-label">Facebook</span>
             </div>
             <div class="social-item">
-                <a class="social-icon instagram" href="#" aria-label="Instagram">
-                    <i class="fa-brands fa-instagram"></i>
+                <a class="social-icon" href="https://x.com/NHSolutionsIA" target="_blank" rel="noopener noreferrer" aria-label="X">
+                    <i class="fa-brands fa-x-twitter"></i>
                 </a>
-                <span class="social-label">Instagram</span>
+                <span class="social-label">X</span>
             </div>
             <div class="social-item">
                 <a class="social-icon youtube" href="https://www.youtube.com/@NaturalHeartlandSolutions" target="_blank" rel="noopener" aria-label="YouTube">
@@ -687,8 +667,8 @@ As the driving force behind the brand's distribution, Wyatt’s mission goes far
 
     <footer>
         <img id="footer-logo" src="logo.jpg" alt="Natural Heartland Solutions" class="footer-logo">
-        <p>&copy; 2025 Natural Heartland Solutions. All Rights Reserved.</p>
-        <p style="font-size: 0.85rem; color: var(--harvest-gold); margin-top: 10px; font-weight: 500;">Building healthier soil, cleaner water, and stronger crop for progressive Midwest producers.</p>
+        <p>&copy; 2026 Natural Heartland Solutions. All Rights Reserved.</p>
+        <p style="font-size: 0.85rem; color: var(--harvest-gold); margin-top: 10px; font-weight: 500;">Building healthier soil, cleaner water, and stronger yields for progressive Midwest producers.</p>
     </footer>
 
     <script>
@@ -763,14 +743,8 @@ As the driving force behind the brand's distribution, Wyatt’s mission goes far
             let extraPucks = (boxesNeeded * 60) - totalPucksNeeded;
             resultBox.innerHTML = `<h4 style="color:var(--brand-brown); margin-bottom:10px; font-weight:800; font-size:1.2rem;">${titleText}</h4><p style="font-size:0.95rem; line-height:1.5; color:var(--text-dark); margin-bottom:5px;">${descriptionText}</p><div class="display-badge-container">${dosageSubText}<div class="big-order-headline" style="margin-top: 5px; padding-top: 15px; border-top: 1px dashed var(--border-soft);">Suggested Order: <span>${boxesNeeded} Box(es)</span></div><div class="rollover-subtext">with +${extraPucks.toFixed(0)} extra treatment pucks rolling over for next year.</div></div>`;
             resultBox.style.display = 'block';
-            document.getElementById('box-qty').value = boxesNeeded;
         }
 
-        function triggerPurchase() {
-            const qty = parseInt(document.getElementById('box-qty').value);
-            if (!qty || qty < 1) { alert("Please supply a valid quantity configuration count."); return; }
-            window.open("https://naturalheartlandsolutions.bigcartel.com/product/manure-pit-pucks", "_blank");
-        }
     </script>
 </body>
 </html>
