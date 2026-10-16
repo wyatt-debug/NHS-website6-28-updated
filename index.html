@@ -25,7 +25,7 @@
         body { background-color: var(--light-cream); color: var(--text-dark); line-height: 1.6; }
 
         /* Every scroll target sits below the sticky header instead of under it */
-        section[id], .tab-wrapper { scroll-margin-top: 120px; }
+        section[id], .tab-wrapper { scroll-margin-top: 160px; }
 
         header {
             background-color: var(--brand-brown);
@@ -40,13 +40,13 @@
             border-bottom: 4px solid var(--harvest-gold);
             box-shadow: 0 4px 12px rgba(58,35,18,0.15);
         }
-        .brand-group { display: flex; flex-direction: column; }
-        .logo h1 { display: block; font-size: 1.5rem; font-weight: 800; letter-spacing: 0.5px; line-height: 1.2; color: var(--pure-white); }
+        .brand-group { display: flex; flex-direction: column; flex: 0 0 auto; }
+        .logo h1 { display: block; font-size: 2.55rem; font-weight: 800; letter-spacing: 0.5px; line-height: 1.12; color: var(--pure-white); }
         .logo span { color: var(--harvest-gold); }
         .header-reach { margin-top: 6px; font-size: 0.86rem; font-weight: 600; color: #f7f3ea; line-height: 1.45; }
         .header-reach a { color: var(--harvest-gold); text-decoration: none; font-weight: 700; }
         .header-reach a:hover { text-decoration: underline; }
-        .nav-right-group { display: flex; align-items: center; gap: 25px; }
+        .nav-right-group { display: flex; align-items: center; gap: 25px; flex: 0 0 auto; }
         nav a { color: var(--pure-white); text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: color 0.3s; }
         nav a:not(:last-child) { margin-right: 20px; }
         nav a:hover { color: var(--harvest-gold); }
@@ -304,13 +304,14 @@
             nav a { font-size: 0.86rem; }
             nav a:not(:last-child) { margin-right: 10px; }
         }
-        @media (max-width: 960px) {
+        @media (max-width: 1240px) {
             header { flex-direction: column; gap: 10px; text-align: center; }
+            .logo h1 { font-size: 2.55rem; }
             .nav-right-group { justify-content: center; }
             nav { display: flex; flex-wrap: wrap; justify-content: center; }
             nav a { font-size: 0.95rem; }
             nav a:not(:last-child) { margin-right: 14px; }
-            section[id], .tab-wrapper { scroll-margin-top: 190px; }
+            section[id], .tab-wrapper { scroll-margin-top: 280px; }
         }
         @media (max-width: 900px) {
             .about-combined { grid-template-columns: 1fr; }
@@ -319,10 +320,11 @@
         }
         @media (max-width: 768px) {
             header { flex-direction: column; gap: 12px; text-align: center; }
+            .logo h1 { font-size: 2.25rem; }
             nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 0; }
             nav a:not(:last-child) { margin-right: 16px; }
             nav a { margin: 4px 0; }
-            section[id], .tab-wrapper { scroll-margin-top: 230px; }
+            section[id], .tab-wrapper { scroll-margin-top: 300px; }
             .hero { padding: 70px 18px; }
             .hero h2 { font-size: 2rem; }
             .hero p { font-size: 1.05rem; }
@@ -336,6 +338,9 @@
             .social-icon { width: 60px; height: 60px; font-size: 1.5rem; }
             .contact-form { padding: 30px 22px; }
             .form-row, .pond-timeline { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 380px) {
+            .logo h1 { font-size: 2.1rem; }
         }
     </style>
 </head>
