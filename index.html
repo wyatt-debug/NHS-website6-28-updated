@@ -43,15 +43,8 @@
         .brand-group { display: flex; flex-direction: row; align-items: center; gap: 16px; flex: 0 0 auto; }
         .logo h1 { display: block; font-size: 2.55rem; font-weight: 800; letter-spacing: 0.5px; line-height: 1.12; color: var(--pure-white); }
         .logo span { color: var(--harvest-gold); }
-        .header-logo-wrap {
-            width: 112px; height: 112px; flex: 0 0 112px;
-            border-radius: 50%; overflow: hidden; padding: 0;
-            border: 2px solid var(--harvest-gold); background: #e7b36a; line-height: 0;
-        }
-        .header-logo-wrap img {
-            width: 100%; height: 100%; display: block; padding: 0; margin: 0; border: 0;
-            object-fit: cover; object-position: center;
-            transform: scale(2.9); transform-origin: 51.4% 48%;
+        .header-logo {
+            height: 90px; width: auto; flex: 0 0 auto; display: block;
         }
         .nav-right-group { display: flex; align-items: center; gap: 25px; flex: 0 0 auto; }
         nav a { color: var(--pure-white); text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: color 0.3s; }
@@ -324,7 +317,7 @@
         @media (max-width: 768px) {
             header { flex-direction: column; gap: 12px; text-align: center; }
             .brand-group { flex-direction: column; gap: 8px; }
-            .header-logo-wrap { width: 88px; height: 88px; flex-basis: 88px; }
+            .header-logo { height: 70px; }
             .logo h1 { font-size: 2.25rem; }
             nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 0; }
             nav a:not(:last-child) { margin-right: 16px; }
@@ -353,9 +346,7 @@
 
     <header>
         <div class="brand-group">
-            <div class="header-logo-wrap">
-                <img id="header-logo" src="logo.jpg" alt="Natural Heartland Solutions Logo">
-            </div>
+            <img id="header-logo" class="header-logo" src="nhs-logo.png" alt="Natural Heartland Solutions Logo">
             <div class="logo">
                 <h1>Natural Heartland <br><span>Solutions</span></h1>
             </div>
