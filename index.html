@@ -25,7 +25,7 @@
         body { background-color: var(--light-cream); color: var(--text-dark); line-height: 1.6; }
 
         /* Every scroll target sits below the sticky header instead of under it */
-        section[id], .tab-wrapper { scroll-margin-top: 160px; }
+        section[id], .tab-wrapper { scroll-margin-top: 190px; }
 
         header {
             background-color: var(--brand-brown);
@@ -40,21 +40,23 @@
             border-bottom: 4px solid var(--harvest-gold);
             box-shadow: 0 4px 12px rgba(58,35,18,0.15);
         }
-        .brand-group { display: flex; flex-direction: column; flex: 0 0 auto; }
+        .brand-group { display: flex; flex-direction: row; align-items: center; gap: 16px; flex: 0 0 auto; }
         .logo h1 { display: block; font-size: 2.55rem; font-weight: 800; letter-spacing: 0.5px; line-height: 1.12; color: var(--pure-white); }
         .logo span { color: var(--harvest-gold); }
-        .header-reach { margin-top: 6px; font-size: 0.86rem; font-weight: 600; color: #f7f3ea; line-height: 1.45; }
-        .header-reach a { color: var(--harvest-gold); text-decoration: none; font-weight: 700; }
-        .header-reach a:hover { text-decoration: underline; }
+        .header-logo-wrap {
+            width: 140px; height: 140px; flex: 0 0 140px;
+            border-radius: 50%; overflow: hidden; padding: 0;
+            border: 2px solid var(--harvest-gold); background: #e7b36a; line-height: 0;
+        }
+        .header-logo-wrap img {
+            width: 100%; height: 100%; display: block; padding: 0; margin: 0; border: 0;
+            object-fit: cover; object-position: center;
+            transform: scale(2.9); transform-origin: 51.4% 48%;
+        }
         .nav-right-group { display: flex; align-items: center; gap: 25px; flex: 0 0 auto; }
         nav a { color: var(--pure-white); text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: color 0.3s; }
         nav a:not(:last-child) { margin-right: 20px; }
         nav a:hover { color: var(--harvest-gold); }
-        .header-logo-right {
-            height: 70px; width: 70px; object-fit: contain;
-            border-radius: 50%; border: 2px solid var(--harvest-gold);
-            background-color: #e7b36a;
-        }
 
         .hero {
             background: linear-gradient(rgba(34,20,9,0.74), rgba(24,14,6,0.88)), url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
@@ -304,14 +306,15 @@
             nav a { font-size: 0.86rem; }
             nav a:not(:last-child) { margin-right: 10px; }
         }
-        @media (max-width: 1240px) {
+        @media (max-width: 1360px) {
             header { flex-direction: column; gap: 10px; text-align: center; }
+            .brand-group { flex-direction: column; gap: 10px; }
             .logo h1 { font-size: 2.55rem; }
             .nav-right-group { justify-content: center; }
             nav { display: flex; flex-wrap: wrap; justify-content: center; }
             nav a { font-size: 0.95rem; }
             nav a:not(:last-child) { margin-right: 14px; }
-            section[id], .tab-wrapper { scroll-margin-top: 280px; }
+            section[id], .tab-wrapper { scroll-margin-top: 330px; }
         }
         @media (max-width: 900px) {
             .about-combined { grid-template-columns: 1fr; }
@@ -320,11 +323,13 @@
         }
         @media (max-width: 768px) {
             header { flex-direction: column; gap: 12px; text-align: center; }
+            .brand-group { flex-direction: column; gap: 8px; }
+            .header-logo-wrap { width: 108px; height: 108px; flex-basis: 108px; }
             .logo h1 { font-size: 2.25rem; }
             nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 0; }
             nav a:not(:last-child) { margin-right: 16px; }
             nav a { margin: 4px 0; }
-            section[id], .tab-wrapper { scroll-margin-top: 300px; }
+            section[id], .tab-wrapper { scroll-margin-top: 360px; }
             .hero { padding: 70px 18px; }
             .hero h2 { font-size: 2rem; }
             .hero p { font-size: 1.05rem; }
@@ -348,10 +353,12 @@
 
     <header>
         <div class="brand-group">
+            <div class="header-logo-wrap">
+                <img id="header-logo" src="logo.jpg" alt="Natural Heartland Solutions Logo">
+            </div>
             <div class="logo">
                 <h1>Natural Heartland <br><span>Solutions</span></h1>
             </div>
-            <p class="header-reach"><a href="tel:515-890-4075">515-890-4075</a> · <a href="mailto:wyatt@nhsolutions.co">wyatt@nhsolutions.co</a></p>
         </div>
         <div class="nav-right-group">
             <nav>
@@ -362,7 +369,6 @@
                 <a href="#about">About Us</a>
                 <a href="#contact">Contact</a>
             </nav>
-            <img id="header-logo" src="logo.jpg" alt="Natural Heartland Solutions Logo" class="header-logo-right">
         </div>
     </header>
 
