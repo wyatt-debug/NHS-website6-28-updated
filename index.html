@@ -25,7 +25,7 @@
         body { background-color: var(--light-cream); color: var(--text-dark); line-height: 1.6; }
 
         /* Every scroll target sits below the sticky header instead of under it */
-        section[id], .tab-wrapper { scroll-margin-top: 120px; }
+        section[id], .tab-wrapper { scroll-margin-top: 190px; }
 
         header {
             background-color: var(--brand-brown);
@@ -40,18 +40,16 @@
             border-bottom: 4px solid var(--harvest-gold);
             box-shadow: 0 4px 12px rgba(58,35,18,0.15);
         }
-        .brand-group { display: flex; flex-direction: column; }
-        .logo h1 { display: block; font-size: 1.5rem; font-weight: 800; letter-spacing: 0.5px; line-height: 1.2; color: var(--pure-white); }
+        .brand-group { display: flex; flex-direction: row; align-items: center; gap: 16px; flex: 0 0 auto; }
+        .logo h1 { display: block; font-size: 2.55rem; font-weight: 800; letter-spacing: 0.5px; line-height: 1.12; color: var(--pure-white); }
         .logo span { color: var(--harvest-gold); }
-        .nav-right-group { display: flex; align-items: center; gap: 25px; }
+        .header-logo {
+            height: 60px; width: auto; flex: 0 0 auto; display: block;
+        }
+        .nav-right-group { display: flex; align-items: center; gap: 25px; flex: 0 0 auto; }
         nav a { color: var(--pure-white); text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: color 0.3s; }
         nav a:not(:last-child) { margin-right: 20px; }
         nav a:hover { color: var(--harvest-gold); }
-        .header-logo-right {
-            height: 70px; width: 70px; object-fit: contain;
-            border-radius: 50%; border: 2px solid var(--harvest-gold);
-            background-color: #e7b36a;
-        }
 
         .hero {
             background: linear-gradient(rgba(34,20,9,0.74), rgba(24,14,6,0.88)), url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
@@ -133,6 +131,7 @@
         .focus-card .focus-link { font-weight: 700; color: var(--brand-brown); font-size: 0.95rem; }
         .focus-card .focus-link i { transition: transform 0.2s; margin-left: 6px; }
         .focus-card:hover .focus-link i { transform: translateX(4px); }
+        .focus-card .focus-cta { align-self: flex-start; margin-top: 16px; padding: 10px 16px; font-size: 0.82rem; }
         .focus-card.lead { border-color: var(--soil-green); background: linear-gradient(180deg, #f7faf0 0%, var(--pure-white) 60%); }
         .focus-card.lead::before { background: var(--soil-green); height: 6px; }
         .focus-card.lead .focus-icon { color: var(--soil-green); }
@@ -172,8 +171,10 @@
         .calc-box { background-color: var(--pure-white); border: 2px solid var(--border-soft); border-radius: 8px; padding: 40px; max-width: 720px; margin: 0 auto; box-shadow: 0 4px 15px rgba(58,35,18,0.03); }
         .form-group { margin-bottom: 22px; }
         .form-group label { display: block; font-weight: 700; margin-bottom: 9px; color: var(--brand-brown); }
-        .form-group select, .form-group input { width: 100%; padding: 12px 15px; border: 2px solid var(--border-soft); background-color: var(--light-cream); border-radius: 4px; font-size: 1rem; color: var(--text-dark); outline: none; }
-        .form-group select:focus, .form-group input:focus { border-color: var(--harvest-gold); }
+        .form-group select, .form-group input, .form-group textarea { width: 100%; padding: 12px 15px; border: 2px solid var(--border-soft); background-color: var(--light-cream); border-radius: 4px; font-size: 1rem; color: var(--text-dark); outline: none; }
+        .form-group textarea { height: 120px; resize: vertical; }
+        .form-group select:focus, .form-group input:focus, .form-group textarea:focus { border-color: var(--harvest-gold); }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
         .calc-btn { background-color: var(--brand-brown); color: var(--pure-white); border: none; padding: 14px 25px; font-size: 1.05rem; font-weight: bold; cursor: pointer; border-radius: 4px; width: 100%; transition: background-color 0.2s; }
         .calc-btn:hover { background-color: #24150a; }
         .result-box { margin-top: 30px; padding: 30px; background: var(--warm-tan); border-left: 8px solid var(--harvest-gold); display: none; border-radius: 6px; color: var(--text-dark); }
@@ -183,6 +184,7 @@
         .sub-metric-headline { font-size: 1.35rem; font-weight: 700; color: var(--text-dark); line-height: 1.4; }
         .sub-metric-headline span { color: var(--brand-brown); background-color: #f7f1e6; padding: 2px 8px; border-radius: 4px; border: 1px solid var(--border-soft); display: inline-block; }
         .rollover-subtext { font-size: 1.05rem; font-weight: 600; color: var(--text-muted); padding-top: 10px; border-top: 1px dashed var(--border-soft); }
+        .quote-link { display: block; width: fit-content; margin: 16px auto 0 auto; }
 
         /* TRUST BADGES */
         .trust-bar {
@@ -229,6 +231,7 @@
 
         .contact-form { max-width: 650px; margin: 0 auto; background: var(--pure-white); padding: 45px; border-radius: 8px; border: 1px solid var(--border-soft); box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
         .soil-subsection { margin-bottom: 25px; padding-bottom: 20px; }
+        .soil-subsection::after { content: ""; display: block; clear: both; }
         .soil-subsection:not(:last-child) { border-bottom: 1px dashed var(--border-soft); }
         .soil-subsection h4 { color: var(--brand-brown); font-size: 1.3rem; font-weight: 800; margin-bottom: 2px; }
         .soil-headline { font-style: italic; font-weight: 600; color: #b88109; margin-bottom: 8px; font-size: 1.05rem; }
@@ -236,6 +239,24 @@
         .omri-badge { float: right; width: 120px; margin: 0 0 12px 20px; padding: 8px 12px; background: var(--pure-white); border: 1px solid var(--border-soft); border-radius: 8px; box-shadow: 0 2px 8px rgba(58,35,18,0.06); }
         .omri-badge img { width: 100%; display: block; }
         .omri-badge .omri-cap { display:block; text-align:center; font-size:0.62rem; font-weight:700; color:var(--soil-green); text-transform:uppercase; letter-spacing:0.4px; margin-top:4px; }
+        .omri-tag { display: inline-block; margin-left: 8px; background: var(--soil-green); color: var(--pure-white); font-size: 0.68rem; font-weight: 800; letter-spacing: 0.4px; text-transform: uppercase; padding: 3px 8px; border-radius: 20px; vertical-align: middle; }
+        .trial-callout { background: #fff9eb; border: 2px solid var(--harvest-gold); border-radius: 8px; padding: 18px 20px; margin: 0 0 28px 0; }
+        .trial-callout h4 { color: var(--brand-brown); font-size: 1.15rem; margin-bottom: 6px; }
+        .trial-callout p { margin: 0; color: var(--text-dark); }
+        .trial-note { display: block; font-size: 0.82rem; color: var(--text-muted); margin-top: 6px; font-weight: 600; }
+        .program-callout { background: #f7faf0; border-left: 6px solid var(--soil-green); border-radius: 6px; padding: 18px 20px; margin: 8px 0 8px 0; }
+        .program-callout h4 { color: var(--soil-green); font-size: 1.15rem; margin-bottom: 6px; }
+        .program-callout p { margin: 0; color: var(--text-dark); }
+        .pond-timeline { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 0 0 28px 0; }
+        .pond-timeline div { background: #eef5f8; border-radius: 6px; padding: 14px 16px; color: var(--text-dark); }
+        .pond-timeline strong { display: block; color: #2f6f86; margin-bottom: 4px; }
+        .price-line { font-weight: 800; color: var(--brand-brown); margin: 12px 0 0 0; }
+        .fine-print { font-size: 0.95rem; color: var(--text-muted); margin: 8px 0 0 0; }
+        .tab-lead .price-line, .tab-lead .fine-print { margin-top: 10px; }
+        .contact-notes { max-width: 720px; margin: -10px auto 28px auto; text-align: center; color: var(--text-dark); }
+        .contact-notes p { margin-bottom: 8px; }
+        .contact-notes a { color: var(--brand-brown); font-weight: 800; text-decoration: none; }
+        .contact-notes a:hover { text-decoration: underline; }
         @media (max-width: 768px) { .omri-badge { width: 95px; margin-left: 14px; } }
         .soil-lead h3 { color: var(--soil-green); font-size: 1.5rem; margin-bottom: 8px; }
         .soil-lead p { color: var(--text-dark); margin: 0; }
@@ -243,6 +264,7 @@
         .tab-lead { border-radius: 6px; padding: 22px 24px; margin-bottom: 28px; }
         .tab-lead h3 { font-size: 1.5rem; margin-bottom: 8px; }
         .tab-lead p { color: var(--text-dark); margin: 0; }
+        .tab-lead p + p { margin-top: 10px; }
         .tab-lead.manure { background: #fbf4e6; border-left: 6px solid var(--harvest-gold); }
         .tab-lead.manure h3 { color: #b88109; }
         .tab-lead.pond { background: #eef5f8; border-left: 6px solid #2f6f86; }
@@ -267,6 +289,9 @@
         .social-item { display:flex; flex-direction:column; align-items:center; }
 
         footer { background-color: var(--brand-brown); color: var(--pure-white); text-align: center; padding: 40px 20px; margin-top: 80px; border-top: 4px solid var(--harvest-gold); }
+        .footer-reach { margin-top: 12px; font-size: 0.98rem; line-height: 1.6; }
+        .footer-reach a { color: var(--harvest-gold); text-decoration: none; font-weight: 700; }
+        .footer-reach a:hover { text-decoration: underline; }
         .footer-logo { width: 70px; height: 70px; object-fit: contain; border-radius: 50%; border: 2px solid var(--harvest-gold); margin: 0 auto 15px auto; display: block; background-color: #e7b36a; }
 
         @media (max-width: 1180px) {
@@ -274,13 +299,15 @@
             nav a { font-size: 0.86rem; }
             nav a:not(:last-child) { margin-right: 10px; }
         }
-        @media (max-width: 960px) {
+        @media (max-width: 1360px) {
             header { flex-direction: column; gap: 10px; text-align: center; }
+            .brand-group { flex-direction: column; gap: 10px; }
+            .logo h1 { font-size: 2.55rem; }
             .nav-right-group { justify-content: center; }
             nav { display: flex; flex-wrap: wrap; justify-content: center; }
             nav a { font-size: 0.95rem; }
             nav a:not(:last-child) { margin-right: 14px; }
-            section[id], .tab-wrapper { scroll-margin-top: 190px; }
+            section[id], .tab-wrapper { scroll-margin-top: 330px; }
         }
         @media (max-width: 900px) {
             .about-combined { grid-template-columns: 1fr; }
@@ -289,10 +316,13 @@
         }
         @media (max-width: 768px) {
             header { flex-direction: column; gap: 12px; text-align: center; }
+            .brand-group { flex-direction: column; gap: 8px; }
+            .header-logo { height: 48px; }
+            .logo h1 { font-size: 2.25rem; }
             nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 0; }
             nav a:not(:last-child) { margin-right: 16px; }
             nav a { margin: 4px 0; }
-            section[id], .tab-wrapper { scroll-margin-top: 230px; }
+            section[id], .tab-wrapper { scroll-margin-top: 360px; }
             .hero { padding: 70px 18px; }
             .hero h2 { font-size: 2rem; }
             .hero p { font-size: 1.05rem; }
@@ -305,6 +335,10 @@
             .trust-bar { gap: 28px; }
             .social-icon { width: 60px; height: 60px; font-size: 1.5rem; }
             .contact-form { padding: 30px 22px; }
+            .form-row, .pond-timeline { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 380px) {
+            .logo h1 { font-size: 2.1rem; }
         }
     </style>
 </head>
@@ -312,6 +346,7 @@
 
     <header>
         <div class="brand-group">
+            <img id="header-logo" class="header-logo" src="nhs-logo.png" alt="Natural Heartland Solutions Logo">
             <div class="logo">
                 <h1>Natural Heartland <br><span>Solutions</span></h1>
             </div>
@@ -325,14 +360,13 @@
                 <a href="#about">About Us</a>
                 <a href="#contact">Contact</a>
             </nav>
-            <img id="header-logo" src="logo.jpg" alt="Natural Heartland Solutions Logo" class="header-logo-right">
         </div>
     </header>
 
     <section class="hero">
         <span class="eyebrow">Soil-First Organic Agriculture</span>
         <h2>Healthier Soil. Cleaner Water. Stronger Yields.</h2>
-        <p>Natural Heartland Solutions starts where every great crop starts &mdash; in the soil. Our OMRI certified organic formulas rebuild living soil biology, then carry that same biological power into manure pits and farm ponds. One ecosystem, restored from the ground up.</p>
+        <p>Natural Heartland Solutions starts where every great crop starts &mdash; in the soil. Our formulas rebuild living soil biology, then carry that same biological power into manure pits and farm ponds. Biomentum, ABC Organic, and Pit and Pond Pucks are OMRI Listed. One ecosystem, restored from the ground up.</p>
         <div class="hero-cta-row">
             <a href="#focus" class="cta-btn">Explore Our Focus Areas</a>
             <a href="https://wyatt-debug.github.io/Test-Plot/" class="cta-btn ghost" target="_blank" rel="noopener noreferrer">Test Plot</a>
@@ -363,7 +397,7 @@
     <div class="trust-bar">
         <div class="trust-item">
             <i class="fa-solid fa-certificate"></i>
-            <strong>OMRI Certified Organic</strong>
+            <strong>OMRI Listed Products</strong>
         </div>
         <div class="trust-item">
             <i class="fa-solid fa-seedling"></i>
@@ -392,20 +426,23 @@
                 <span class="pill">Our Foundation</span>
                 <i class="fa-solid fa-seedling focus-icon"></i>
                 <h3>Soil Health</h3>
-                <p>Rebuild the biological engine beneath your crops. Biomentum, ABC Soil Health, and Aminos-N activate native microbes, unlock locked-up minerals, and stress-proof yields &mdash; naturally.</p>
+                <p>Rebuild the biological engine beneath your crops. Biomentum, ABC Soil Health, and Aminos-N wake up native microbes and unlock tied-up minerals &mdash; naturally.</p>
                 <span class="focus-link">See soil solutions <i class="fa-solid fa-arrow-right"></i></span>
+                <a href="#contact" class="cta-btn focus-cta" onclick="event.stopPropagation(); prefillQuote('soil');">Get a soil plan</a>
             </div>
             <div class="focus-card" onclick="focusTo('manure-tab', 1)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')focusTo('manure-tab',1)">
                 <i class="fa-solid fa-piggy-bank focus-icon"></i>
                 <h3>Manure Management</h3>
-                <p>Turn hog barn waste into a stable, plant-available fertilizer asset. Pit Pucks lock in nutrients, crush ammonia odors, and liquefy heavy sludge and crust.</p>
+                <p>Turn hog barn waste into a stable, plant-available fertilizer asset. Pit Pucks lock in nutrients, cut down ammonia odors, and liquefy heavy sludge and crust.</p>
                 <span class="focus-link">See manure solutions <i class="fa-solid fa-arrow-right"></i></span>
+                <a href="#contact" class="cta-btn focus-cta" onclick="event.stopPropagation(); prefillQuote('manure');">Get a quote</a>
             </div>
             <div class="focus-card" onclick="focusTo('pond-tab', 2)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')focusTo('pond-tab',2)">
                 <i class="fa-solid fa-water focus-icon"></i>
                 <h3>Pond &amp; Lake Restoration</h3>
                 <p>Restore whole water ecosystems instead of chemical-shocking them. Pond Pucks starve algae, digest bottom muck, and protect fish with steady, balanced biology.</p>
                 <span class="focus-link">See pond solutions <i class="fa-solid fa-arrow-right"></i></span>
+                <a href="#contact" class="cta-btn focus-cta" onclick="event.stopPropagation(); prefillQuote('pond');">Get a pond plan</a>
             </div>
         </div>
     </section>
@@ -416,7 +453,7 @@
         <div class="feature-banner-text">
             <h3>It All Starts in the Soil</h3>
             <p>We didn't develop these products in a lab far removed from the realities of modern agriculture. Natural Heartland Solutions was born out of the same fields, barns, and ponds that our customers work every single day &mdash; and the healthiest of those fields all have one thing in common: living, biologically active soil.</p>
-            <p>That conviction drives everything. Our soil-health line rebuilds the microbial foundation beneath your crops, and the same OMRI listed biology powers our Pit Pucks and Pond Pucks. Healthy soil, managed manure, and clean water are one connected system &mdash; and we treat them that way.</p>
+            <p>That conviction drives everything. Our soil-health line rebuilds the microbial foundation beneath your crops. OMRI Listed biology also powers our Pit Pucks and Pond Pucks. Healthy soil, managed manure, and clean water are one connected system &mdash; and we treat them that way.</p>
             <a href="#contact" class="cta-btn" style="margin-top:10px;">Talk to Our Team</a>
         </div>
     </div>
@@ -443,37 +480,56 @@
                     <h3>Soil Health Is Where It All Begins</h3>
                     <p>Before a single nutrient reaches your crop, it has to move through living soil. Our soil-health line rebuilds that biology from the ground up &mdash; activating native microbes, unlocking bound minerals, and helping every other input on your operation work harder. Start here, and the rest of your fertility program follows.</p>
                 </div>
+                <div class="trial-callout">
+                    <h4>2026 Algona Corn Trial</h4>
+                    <p>213.1 bu/acre untreated vs 230.9 bu/acre treated. <strong>+17.8 bu/acre.</strong> <span class="trial-note">Single field, unreplicated.</span></p>
+                </div>
                 <div class="soil-subsection">
                     <div class="omri-badge">
                         <img src="omri.png" alt="OMRI Listed for Organic Use">
-                        <span class="omri-cap">Certified Product</span>
+                        <span class="omri-cap">OMRI Listed</span>
                     </div>
-                    <h4>Biomentum</h4>
+                    <h4>Biomentum <span class="omri-tag">OMRI Listed</span></h4>
                     <div class="soil-headline">Tap Into the Power of Advanced Soil Biology</div>
-                    <p>Transform your acreage by activating the natural biological engine right beneath your feet. Biomentum is a cutting edge microbial formula that introduces a highly targeted blend of beneficial bacteria alongside mycorrhizal and saprophytic fungi. By re-establishing this vital ecosystem, it triggers the plant's natural defenses and breaks down stubborn, locked up minerals into forms your crops can actually digest. Whether you are looking to suppress aggressive diseases like white mold, treat manure, or optimize your forage and hay quality, this highly versatile biological tool helps you grow more while spending less on traditional chemical inputs.</p>
+                    <p>Wake up the biological engine right beneath your feet. Biomentum is a microbial formula with a targeted blend of beneficial bacteria alongside mycorrhizal and saprophytic fungi. By re-establishing that ecosystem, it supports the plant's natural defenses and breaks down stubborn, locked-up minerals into forms your crops can actually use. Use it to treat manure or to improve forage and hay quality, and spend less on traditional chemical inputs.</p>
+                </div>
+                <div class="soil-subsection">
+                    <h4>Residue Digester</h4>
+                    <div class="soil-headline">Fall Residue Breakdown From Year Two On</div>
+                    <p>Use Biomentum the first year. From year two on, Residue Digester takes the fall pass and breaks down residue. This is the conventional Residue Digester, for stalk and stubble breakdown after harvest.</p>
                 </div>
                 <div class="soil-subsection">
                     <h4>ABC Soil Health</h4>
-                    <div class="soil-headline">The Ultimate Fuel Injection for Your Soil Matrix</div>
-                    <p>Why let expensive fertilizer go to waste? ABC Soil Health is a premium, triple-action conditioner engineered to radically improve nutrient retention and root-zone activity. By fusing the energy-saving power of Aminos-N, the biological strength of Biomentum, and the structural benefits of Humic Acid, this formula ensures your inputs stay where they belong in the root zone. It provides a massive boost to native microbial populations, strengthens early-season crop vigor, and maximizes the return on investment of your entire fertility program.</p>
+                    <div class="soil-headline">Root-Zone Fuel, Matched to the Label</div>
+                    <p>ABC Soil Health is the conventional formula: water, molasses, fish, kelp, lactic acid bacteria, trace minerals, and humic acid. Those inputs feed root-zone biology, help keep nutrients where the crop can reach them, and give early growth a strong start.</p>
                 </div>
                 <div class="soil-subsection">
-                    <h4>ABC Soil Health Organic</h4>
-                    <div class="soil-headline">Pure, High Performance Soil Conditioning for Organic Growers</div>
-                    <p>Rebuild your land from the ground up without compromising your organic standards. This premium soil rejuvenator utilizes a powerful, clean labeled blend of nutrient rich Liquid Fish, active Humic Acid, and our signature Biomentum microbial formula. Together, these ingredients work in harmony to loosen tight soils, dramatically increase water and nutrient holding capacity, and feed the underground biology. It's the perfect solution for organic producers who want to maximize crop potential, naturally improve soil structure, and cultivate a highly productive ecosystem.</p>
+                    <div class="omri-badge">
+                        <img src="omri.png" alt="OMRI Listed for Organic Use">
+                        <span class="omri-cap">OMRI Listed</span>
+                    </div>
+                    <h4>ABC Soil Health Organic <span class="omri-tag">OMRI Listed</span></h4>
+                    <div class="soil-headline">OMRI Listed Soil Conditioning for Organic Growers</div>
+                    <p>ABC Organic is OMRI Listed for growers who need to stay inside organic standards. The label lines up the same way: water, molasses, fish, kelp, lactic acid bacteria, trace minerals, and humic acid. Together they loosen tight ground and feed the biology underground.</p>
                 </div>
                 <div class="soil-subsection">
                     <h4>Aminos-N</h4>
-                    <div class="soil-headline">Stress-Proof Your Yields with Premium Plant Nutrition</div>
-                    <p>When heat waves, drought, or extreme weather strike, your crops shouldn't have to fight to survive. Aminos-N delivers a highly bioavailable dose of 18 essential L-form amino acids and 16 vital trace minerals directly to the plant. Because it provides a clean, easily digestible source of organic nitrogen, your crops don't have to waste valuable energy processing heavy synthetic fertilizers. Instead, they can focus that energy on thriving through environmental stress, maintaining steady growth, and pushing for top tier yields.</p>
+                    <div class="soil-headline">Premium Plant Nutrition When the Weather Turns</div>
+                    <p>When heat waves, drought, or extreme weather strike, your crops shouldn't have to fight to survive. Aminos-N delivers a highly bioavailable dose of 18 essential L-form amino acids and 16 vital trace minerals directly to the plant. Because it provides a clean, easily digestible source of organic nitrogen, your crops don't have to waste valuable energy processing heavy synthetic fertilizers. Instead, they can focus that energy on steady growth and a push for top-tier yields.</p>
+                </div>
+                <div class="program-callout">
+                    <h4>A Sample Program</h4>
+                    <p>2 qt Biomentum in the fall, 2 to 3 qt ABC at planting, and 2 qt ABC with the post-emerge pass.</p>
                 </div>
             </div>
 
             <div id="manure-tab" class="tab-content">
                 <img class="tab-img" src="hogbarn.jpg" alt="Hogs in a hog barn">
                 <div class="tab-lead manure">
-                    <h3>Hog Manure and More: The Power of the Pit Puck</h3>
-                    <p>Traditional manure management is an uphill battle against crusting, harsh odors, and critical nutrient loss. Our biological approach shifts the focus from simple waste storage to active nutrient optimization &mdash; turning your barn's waste into a high-value fertilizer asset. Drop these all-natural, OMRI listed pucks directly into your facility's waste system and a focused microbial digestion cascade goes to work.</p>
+                    <h3>Hog Manure and More: The Power of the Pit Puck <span class="omri-tag">OMRI Listed</span></h3>
+                    <p>Traditional manure management is an uphill battle against crusting, harsh odors, and critical nutrient loss. Our biological approach shifts the focus from simple waste storage to active nutrient optimization &mdash; turning your barn's waste into a high-value fertilizer asset. Drop these all-natural, OMRI Listed pucks directly into your facility's waste system and a focused microbial digestion cascade goes to work.</p>
+                    <p class="price-line">Starting at $250 per box of 60.</p>
+                    <p class="fine-print">Pricing depends on volume, so call for a quote. Dealer pricing available.</p>
                 </div>
                 <div class="soil-subsection">
                     <h4>Nutrient Stabilization</h4>
@@ -483,7 +539,7 @@
                 <div class="soil-subsection">
                     <h4>Ammonia &amp; Odor Reduction</h4>
                     <div class="soil-headline">A Healthier Barn for Your Pigs and Your Crew</div>
-                    <p>By stabilizing nitrogen, you drastically eliminate the harsh, ambient ammonia smells that lead to sick pigs and poor working conditions. The result is a barn that's easier to breathe in and better for your animals' performance.</p>
+                    <p>By stabilizing nitrogen, you help reduce the harsh, ambient ammonia smells that lead to sick pigs and poor working conditions. The result is a barn that's easier to breathe in and better for your animals' performance.</p>
                 </div>
                 <div class="soil-subsection">
                     <h4>Facility Longevity</h4>
@@ -493,15 +549,28 @@
                 <div class="soil-subsection">
                     <h4>Waste Liquefaction</h4>
                     <div class="soil-headline">Break Down Sludge, Crust, and Methane Hazards</div>
-                    <p>These specialized microbes aggressively accelerate decomposition to actively reduce heavy bottom sludge, eliminate thick crusting blockages, and prevent foaming methane hazards &mdash; keeping your pit flowing and safe.</p>
+                    <p>These specialized microbes speed up decomposition to reduce heavy bottom sludge, cut down thick crust, and ease foaming methane hazards &mdash; keeping your pit flowing and safer to work around.</p>
                 </div>
             </div>
 
             <div id="pond-tab" class="tab-content">
                 <img class="tab-img" src="https://images.unsplash.com/photo-1439066615861-d1af74d74000?auto=format&fit=crop&w=1000&q=80" alt="Calm farm pond" onerror="this.style.display='none'">
                 <div class="tab-lead pond">
-                    <h3>Ponds and Lakes: Organic Pond Pucks</h3>
-                    <p>Traditional aquatic management relies on harsh "chemical shock" treatments that deliver only temporary visual fixes while leaving underlying issues untouched. Our approach focuses on whole-ecosystem restoration &mdash; addressing the root causes of water degradation to create self-regulating, clear, and resilient water bodies. Drop these all-organic, enzyme-driven pucks straight into your target waters and a continuous biological cleanup cascade begins.</p>
+                    <h3>Ponds and Lakes: Organic Pond Pucks <span class="omri-tag">OMRI Listed</span></h3>
+                    <p>For farm ponds, acreages, lake associations, and golf courses. Traditional aquatic management relies on harsh "chemical shock" treatments that deliver only temporary visual fixes while leaving underlying issues untouched. Pond Pucks use live beneficial microbes to restore the whole system. Drop them in and a steady biological cleanup gets to work.</p>
+                    <p class="price-line">Starting at $250 per box of 60.</p>
+                    <p class="fine-print">Pricing depends on volume, so call for a quote. Dealer pricing available.</p>
+                    <p class="fine-print">Safe for fish, livestock, wildlife and irrigation. Works even better with aeration.</p>
+                </div>
+                <div class="soil-subsection">
+                    <h4>Season Rates</h4>
+                    <div class="soil-headline">About 2 Boxes a Year for a Typical 1-Acre Pond</div>
+                    <p>Use 50 pucks per surface acre the first month, or 100 for heavy muck or algae. Then use 10 per acre each month from April to October. On a typical 1-acre pond, that is about 2 boxes a year.</p>
+                </div>
+                <div class="pond-timeline">
+                    <div><strong>Year 1</strong>Sludge starts breaking down and blooms soften.</div>
+                    <div><strong>Year 2</strong>Blooms drop off.</div>
+                    <div><strong>Year 3</strong>The pond is balanced.</div>
                 </div>
                 <div class="soil-subsection">
                     <h4>Natural Algae Prevention</h4>
@@ -520,8 +589,8 @@
                 </div>
                 <div class="soil-subsection">
                     <h4>Enhanced Decomposition</h4>
-                    <div class="soil-headline">Clearer Water, Permanently Lower Nutrient Loading</div>
-                    <p>Boosting microbial diversity dramatically speeds up the natural breakdown of organic matter, improving water clarity and permanently reducing the internal nutrient loading that fuels future blooms.</p>
+                    <div class="soil-headline">Clearer Water, Lower Nutrient Loading Year After Year</div>
+                    <p>A broader mix of live beneficial microbes speeds up the natural breakdown of organic matter, improving water clarity and cutting the internal nutrient loading that fuels future blooms, year after year.</p>
                 </div>
             </div>
         </div>
@@ -633,7 +702,13 @@
 
     <section id="contact" class="container">
         <h2 class="section-title">Contact Our Iowa Office</h2>
-        <form class="contact-form" 
+        <div class="contact-notes">
+            <p>Wyatt Streit · <a href="tel:515-890-4075">515-890-4075</a> · <a href="mailto:wyatt@nhsolutions.co">wyatt@nhsolutions.co</a></p>
+            <p>Evan Deal · <a href="tel:515-341-1921">(515) 341-1921</a> · <a href="mailto:evan@nhsolutions.co">evan@nhsolutions.co</a></p>
+            <p>Pricing depends on volume, so call for a quote. Dealer pricing available.</p>
+            <p>Iowa sales tax exemption forms are accepted for farmers and resellers.</p>
+        </div>
+        <form class="contact-form" id="contact-form"
               action="https://formspree.io/f/xqejpozz" 
               method="POST"
               onsubmit="alert('Thank you! A Natural Heartland Solutions representative will review your operation parameters and reach out within 24 business hours.');">
@@ -642,24 +717,58 @@
                 <input type="text" id="farm-name" name="farm_name" required placeholder="e.g. Heartland Family Farms">
             </div>
             <div class="form-group">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <div class="form-row">
                     <div>
                         <label for="contact-name">Your Name</label>
                         <input type="text" id="contact-name" name="contact_name" required placeholder="John Doe">
                     </div>
                     <div>
                         <label for="contact-phone">Phone Number</label>
-                        <input type="tel" id="contact-phone" name="contact_phone" required placeholder="515-555-0199">
+                        <input type="tel" id="contact-phone" name="contact_phone" required placeholder="Your phone number">
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <label for="contact-email">Email Address</label>
-                <input type="email" id="contact-email" name="contact_email" required placeholder="johndoe@agri-email.com">
+                <input type="email" id="contact-email" name="contact_email" required placeholder="you@example.com">
+            </div>
+            <div class="form-group">
+                <label for="product-interest">Product Interest</label>
+                <select id="product-interest" name="product_interest" required>
+                    <option value="">Select a product</option>
+                    <option value="Soil health plan">Soil health plan</option>
+                    <option value="Pit Pucks">Pit Pucks</option>
+                    <option value="Pond Pucks">Pond Pucks</option>
+                    <option value="Biomentum">Biomentum</option>
+                    <option value="ABC Soil Health">ABC Soil Health</option>
+                    <option value="ABC Soil Health Organic">ABC Soil Health Organic</option>
+                    <option value="Residue Digester">Residue Digester</option>
+                    <option value="Aminos-N">Aminos-N</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <div class="form-row">
+                    <div>
+                        <label for="acres">Acres</label>
+                        <input type="number" id="acres" name="acres" min="0" step="any" placeholder="e.g. 160">
+                    </div>
+                    <div>
+                        <label for="head-of-hogs">Head of Hogs</label>
+                        <input type="number" id="head-of-hogs" name="head_of_hogs" min="0" step="1" placeholder="e.g. 2400">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="pond-acres">Pond Size (Surface Acres)</label>
+                <input type="number" id="pond-acres" name="pond_surface_acres" min="0" step="any" placeholder="e.g. 1.5">
+            </div>
+            <div class="form-group">
+                <label for="hear-about">How did you hear about us?</label>
+                <input type="text" id="hear-about" name="hear_about" placeholder="Neighbor, dealer, Facebook, field day...">
             </div>
             <div class="form-group">
                 <label for="contact-message">Message / Operation Specifics</label>
-                <textarea id="contact-message" name="contact_message" style="width:100%; padding:12px; border:2px solid var(--border-soft); background-color:var(--light-cream); border-radius:4px; font-size:1rem; height:120px; outline:none; color: var(--text-dark);" placeholder="Tell us about your soil goals, hog barn size, pond acreage, or current challenges..."></textarea>
+                <textarea id="contact-message" name="contact_message" placeholder="Tell us about your soil goals, hog barn size, pond acreage, or current challenges..."></textarea>
             </div>
             <button type="submit" class="calc-btn">Submit Inquiry</button>
         </form>
@@ -668,6 +777,7 @@
     <footer>
         <img id="footer-logo" src="logo.jpg" alt="Natural Heartland Solutions" class="footer-logo">
         <p>&copy; 2026 Natural Heartland Solutions. All Rights Reserved.</p>
+        <p class="footer-reach">Wyatt Streit · <a href="tel:515-890-4075">515-890-4075</a> · <a href="mailto:wyatt@nhsolutions.co">wyatt@nhsolutions.co</a><br>Evan Deal · <a href="tel:515-341-1921">(515) 341-1921</a> · <a href="mailto:evan@nhsolutions.co">evan@nhsolutions.co</a></p>
         <p style="font-size: 0.85rem; color: var(--harvest-gold); margin-top: 10px; font-weight: 500;">Building healthier soil, cleaner water, and stronger yields for progressive Midwest producers.</p>
     </footer>
 
@@ -709,40 +819,76 @@
             }
         }
 
+        let lastCalc = null;
+
         function calculateDosage() {
             const type = document.getElementById('calc-type').value;
             const value = parseFloat(document.getElementById('calc-input').value);
             const resultBox = document.getElementById('calc-result');
             if (!value || value <= 0) { alert("Please input a valid size metric to run calculations."); return; }
             let totalPucksNeeded = 0, boxesNeeded = 0, titleText = "", descriptionText = "", dosageSubText = "";
+            let startupPucks = 0, maintenancePucksPerMonth = 0;
             if (type === 'manure') {
-                let startupPucks = (value / 100) * 5;
-                let maintenancePucksPerMonth = (value / 100) * 1;
+                startupPucks = (value / 100) * 5;
+                maintenancePucksPerMonth = (value / 100) * 1;
                 totalPucksNeeded = startupPucks + (maintenancePucksPerMonth * 11);
                 boxesNeeded = Math.ceil(totalPucksNeeded / 60);
                 titleText = `<i class="fa-solid fa-calculator" style="color:var(--harvest-gold)"></i> Hog Barn Application Profile:`;
                 descriptionText = `Operational analysis for a facility holding <strong>${value.toLocaleString()} Hogs</strong> (Total Annual Requirement: ${totalPucksNeeded.toFixed(0)} Pucks):`;
                 dosageSubText = `<div class="sub-metric-headline">First Month Startup: <span>${startupPucks.toFixed(0)} Pucks</span></div><div class="sub-metric-headline">Remaining 11 Months: <span>${maintenancePucksPerMonth.toFixed(0)} Pucks / Month</span></div>`;
             } else if (type === 'pond_std') {
-                let startupPucks = value * 50;
-                let maintenancePucksPerMonth = value * 10;
+                startupPucks = value * 50;
+                maintenancePucksPerMonth = value * 10;
+                // April through October is 7 months, on top of the first-month dose.
+                // A typical 1-acre pond: 50 + 10*7 = 120 pucks = 2 boxes of 60.
                 totalPucksNeeded = startupPucks + (maintenancePucksPerMonth * 7);
                 boxesNeeded = Math.ceil(totalPucksNeeded / 60);
                 titleText = `<i class="fa-solid fa-calculator" style="color:var(--harvest-gold)"></i> Standard Pond Maintenance Profile:`;
-                descriptionText = `Operational analysis for a <strong>${value} Acre</strong> standard baseline water treatment profile (Total Annual Requirement: ${totalPucksNeeded.toFixed(0)} Pucks):`;
-                dosageSubText = `<div class="sub-metric-headline">First Month Startup: <span>${startupPucks.toFixed(0)} Pucks</span></div><div class="sub-metric-headline">7 Active Warm Months: <span>${maintenancePucksPerMonth.toFixed(0)} Pucks / Month</span></div>`;
+                descriptionText = `Operational analysis for a <strong>${value} Acre</strong> standard pond (Total Annual Requirement: ${totalPucksNeeded.toFixed(0)} Pucks):`;
+                dosageSubText = `<div class="sub-metric-headline">First Month Startup: <span>${startupPucks.toFixed(0)} Pucks</span></div><div class="sub-metric-headline">April to October: <span>${maintenancePucksPerMonth.toFixed(0)} Pucks / Month</span></div>`;
             } else if (type === 'pond_heavy') {
-                let startupPucks = value * 100;
-                let maintenancePucksPerMonth = value * 10;
+                startupPucks = value * 100;
+                maintenancePucksPerMonth = value * 10;
                 totalPucksNeeded = startupPucks + (maintenancePucksPerMonth * 7);
                 boxesNeeded = Math.ceil(totalPucksNeeded / 60);
                 titleText = `<i class="fa-solid fa-calculator" style="color:var(--harvest-gold)"></i> Heavy Build-Up Pond Profile:`;
-                descriptionText = `Operational analysis for a <strong>${value} Acre</strong> heavy muck or severe historical algae water profile (Total Annual Requirement: ${totalPucksNeeded.toFixed(0)} Pucks):`;
-                dosageSubText = `<div class="sub-metric-headline">First Month Startup: <span>${startupPucks.toFixed(0)} Pucks</span></div><div class="sub-metric-headline">7 Active Warm Months: <span>${maintenancePucksPerMonth.toFixed(0)} Pucks / Month</span></div>`;
+                descriptionText = `Operational analysis for a <strong>${value} Acre</strong> pond with heavy muck or algae (Total Annual Requirement: ${totalPucksNeeded.toFixed(0)} Pucks):`;
+                dosageSubText = `<div class="sub-metric-headline">First Month Startup: <span>${startupPucks.toFixed(0)} Pucks</span></div><div class="sub-metric-headline">April to October: <span>${maintenancePucksPerMonth.toFixed(0)} Pucks / Month</span></div>`;
             }
             let extraPucks = (boxesNeeded * 60) - totalPucksNeeded;
-            resultBox.innerHTML = `<h4 style="color:var(--brand-brown); margin-bottom:10px; font-weight:800; font-size:1.2rem;">${titleText}</h4><p style="font-size:0.95rem; line-height:1.5; color:var(--text-dark); margin-bottom:5px;">${descriptionText}</p><div class="display-badge-container">${dosageSubText}<div class="big-order-headline" style="margin-top: 5px; padding-top: 15px; border-top: 1px dashed var(--border-soft);">Suggested Order: <span>${boxesNeeded} Box(es)</span></div><div class="rollover-subtext">with +${extraPucks.toFixed(0)} extra treatment pucks rolling over for next year.</div></div>`;
+            lastCalc = { type, value, boxesNeeded, totalPucksNeeded, startupPucks, maintenancePucksPerMonth };
+            resultBox.innerHTML = `<h4 style="color:var(--brand-brown); margin-bottom:10px; font-weight:800; font-size:1.2rem;">${titleText}</h4><p style="font-size:0.95rem; line-height:1.5; color:var(--text-dark); margin-bottom:5px;">${descriptionText}</p><div class="display-badge-container">${dosageSubText}<div class="big-order-headline" style="margin-top: 5px; padding-top: 15px; border-top: 1px dashed var(--border-soft);">Suggested Order: <span>${boxesNeeded} Box(es)</span></div><div class="rollover-subtext">with +${extraPucks.toFixed(0)} extra treatment pucks rolling over for next year.</div></div><a href="#contact" class="cta-btn quote-link" onclick="prefillFromCalc()">Request a quote for this plan</a>`;
             resultBox.style.display = 'block';
+        }
+
+        function prefillQuote(kind) {
+            const interest = document.getElementById('product-interest');
+            if (!interest) return;
+            if (kind === 'soil') interest.value = 'Soil health plan';
+            if (kind === 'manure') interest.value = 'Pit Pucks';
+            if (kind === 'pond') interest.value = 'Pond Pucks';
+        }
+
+        function prefillFromCalc() {
+            if (!lastCalc) return;
+            const interest = document.getElementById('product-interest');
+            const hogs = document.getElementById('head-of-hogs');
+            const pond = document.getElementById('pond-acres');
+            const message = document.getElementById('contact-message');
+            const startup = lastCalc.startupPucks.toFixed(0);
+            const monthly = lastCalc.maintenancePucksPerMonth.toFixed(0);
+            const boxes = lastCalc.boxesNeeded;
+            if (lastCalc.type === 'manure') {
+                interest.value = 'Pit Pucks';
+                hogs.value = lastCalc.value;
+                message.value = `Pit Puck plan for ${lastCalc.value.toLocaleString()} hogs. First month: ${startup} pucks, then ${monthly} pucks per month. Suggested order: ${boxes} box(es) of 60.`;
+            } else {
+                interest.value = 'Pond Pucks';
+                pond.value = lastCalc.value;
+                const profile = lastCalc.type === 'pond_heavy' ? 'heavy muck or algae' : 'standard maintenance';
+                const acreWord = Number(lastCalc.value) === 1 ? 'surface acre' : 'surface acres';
+                message.value = `Pond Puck plan for ${lastCalc.value} ${acreWord} (${profile}). First month: ${startup} pucks, then ${monthly} pucks per month from April to October. Suggested order: ${boxes} box(es) of 60.`;
+            }
         }
 
     </script>
